@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "Define Object Property",
-  "short_name": "define-object-property",
+  "name": "Fake Browser",
+  "short_name": "fake-b",
   "description": "__MSG_extension_desc__",
-  "author": "Mediafull",
+  "author": "",
 
   "default_locale": "en",
   "version": "1.0.0",
@@ -14,16 +14,10 @@
     "128": "/img/128x128.png"
   },
 
-  "options_ui": {
-    "page": "/html/options.html",
-    "chrome_style": true,
-    "open_in_tab": false
-  },
-
   "browser_action": {
     "default_icon": "/img/48x48.png",
     "default_popup": "/html/popup.html",
-    "default_title": "Define Object Property"
+    "default_title": "Fake Browser"
   },
 
   "background": {
@@ -33,7 +27,7 @@
 
   "content_scripts": [{
     "all_frames": true,
-    "js": ["/js/inject/fakeGI.js", "/js/inject/content.js"],
+    "js": ["/js/inject/content.js"],
     "matches": ["*://*/*"],
     "match_about_blank": true,
     "run_at": "document_start"

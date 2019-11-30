@@ -277,7 +277,19 @@ var API = {
       }
 
       return false;
+    },
+
+
+    getFakeData: function () {
+      return Settings.fakeData;
+    },
+
+
+    setFakeData: function (params) {
+      Settings.fakeData = params;
+      return false
     }
+
   },
 
   useragent: {

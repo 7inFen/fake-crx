@@ -56,8 +56,11 @@ chrome.webRequest.onBeforeSendHeaders.addListener(function(details) {
   //   console.log('来自content的回复：'+response);
   // });
   if (API.settings.getEnabled() === true) {
-    var useragent = API.useragent.get();
-    if (typeof useragent === 'string') {
+    var fakeData = API.settings.getFakeData() || {
+      userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.4 Mobile/15E148 Safari/604.1'
+    };
+    var userAgent = fakeData.userAgent
+    if (typeof userAgent === 'string') {
       // Make wildcard search in exceptions list
       //console.log('Catch URI "' + details.url + '"');
       if (API.exceptions.uriMatch({uri: details.url})) {
@@ -67,23 +70,9 @@ chrome.webRequest.onBeforeSendHeaders.addListener(function(details) {
       // Find User-Agent header, and modify it
       for (var i = 0, len = details.requestHeaders.length; i < len; ++i) {
         if (details.requestHeaders[i].name === 'User-Agent') {
-          details.requestHeaders[i].value = useragent;
+          details.requestHeaders[i].value = userAgent;
           break;
         }
-        // if (details.requestHeaders[i].name === 'Accept') {
-        //   details.requestHeaders[i].value = 'json';
-        //   // break;
-        // }
-        // details.requestHeaders.push(
-        //     {
-        //       name: 'Authrization',
-        //       value: '12313xx'
-        //     },
-        //     {
-        //       name: 'MFHeader',
-        //       value: 'mf'
-        //     }
-        // )
       }
       return {requestHeaders: details.requestHeaders};
     }

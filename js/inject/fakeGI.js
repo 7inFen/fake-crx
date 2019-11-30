@@ -2,8 +2,7 @@ var webgl = document.createElement('canvas').getContext('webgl');
 var extensionDebugRendererInfo = webgl.getExtension('WEBGL_debug_renderer_info')
 var vendorKey = extensionDebugRendererInfo.UNMASKED_VENDOR_WEBGL
 var rendererKey = extensionDebugRendererInfo.UNMASKED_RENDERER_WEBGL
-// console.log('Vendor key: ', vendorKey, ' => Fake GI Vendor')
-// console.log('Renderer key', rendererKey, ' => Fake GI Renderer')
+
 
 var content = " \
 String = function () { \
@@ -43,6 +42,8 @@ document.createElement = function () { \
   return el; \
 }; \
 "
+
+
 var script = document.createElement('script');
 script.textContent = content;
 document.documentElement.appendChild(script);

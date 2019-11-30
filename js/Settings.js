@@ -44,7 +44,30 @@ var Settings = new Proxy({
     // Any links
     links_bugreport: 'https://github.com/tarampampam/random-user-agent/issues/new?template=bug_report.md',
     // Donation link
-    links_donate: 'http://yasobe.ru/na/paramtamtam'
+    links_donate: 'http://yasobe.ru/na/paramtamtam',
+
+    fakeData: {
+      width: 414,
+      height: 896,
+      availWidth: 414,
+      availHeight: 896,
+      evalLength: 37,
+      platform: 'iPhone',
+      vendor: 'Apple Computer, Inc.',
+      colorDepth: 32,
+      devicePixelRatio: 2,
+      outerWidth: 414,
+      outerHeight: 896,
+      innerWidth: 414,
+      innerHeight: 719,
+      openDatabase: '',
+      hardwareConcurrency: '',
+      webglVendor: 'Apple Inc.',
+      webglRenderer: 'Apple GPU',
+      userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.4 Mobile/15E148 Safari/604.1',
+      plugins: '',
+      referrer: ''
+    }
   },
 
   // Flag - load() method already called, or not?
