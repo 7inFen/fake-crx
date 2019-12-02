@@ -87,9 +87,9 @@ if (typeof browser == 'undefined') {
       uri_match = results[3];
 
     var consoleMessage = function (message_text) {
-      if (typeof message_text === 'string') {
-        console.log('[Random User-Agent] ' + message_text);
-      }
+      // if (typeof message_text === 'string') {
+      //   console.log('[Random User-Agent] ' + message_text);
+      // }
     };
 
     fakeData = fakeData || {
@@ -168,8 +168,9 @@ if (typeof browser == 'undefined') {
       if (js_protection_enabled === true) {
         if (uri_match === false) {
 
-          var injection_code = '(' + function () {
-            var fakeData = {
+          var injection_code = '(' + function (fakeData) {
+            
+            fakeData = fakeData || {
               width: 414,
               height: 896,
               availWidth: 414,
@@ -245,7 +246,7 @@ if (typeof browser == 'undefined') {
               Object.defineProperties(navigator, fakeNavigator);
               Object.defineProperties(document, fakeDocument);
             }
-          } + ')();';
+          } + ')(' + JSON.stringify(fakeData) +');';
 
           var script = document.createElement('script');
           script.textContent = injection_code;
